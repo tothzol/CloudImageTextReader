@@ -6,15 +6,16 @@ import com.google.cloud.functions.Context;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class FileTrigger implements BackgroundFunction<GcsEvent>{
-
+private static final Logger logger = Logger.getLogger(FileTrigger.class.getName());
     @Override
     public void accept(GcsEvent event, Context context) {
 
         ArrayList<String> Texts;
         try {
-
+logger.info("FileName: gs://"+event.getBucket()+"/"+event.getName());
             Texts= DetectText.detectText("gs://"+event.getBucket()+"/"+event.getName());
             String dbUser="root";
             String dbPassword="Cl0ud2021!";
@@ -28,6 +29,7 @@ public class FileTrigger implements BackgroundFunction<GcsEvent>{
 
         }
         catch (Exception e) {
+            logger.info("Error: "+e.getMessage());
             e.printStackTrace();
 
         }
