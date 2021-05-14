@@ -15,7 +15,7 @@ public class CloudSQLConnectionPool {
         logger.info("Starting to create new HikariConfig...");
         HikariConfig config = new HikariConfig();
         logger.info("Setting JDBC...");
-        config.setJdbcUrl(String.format("jdbc:mysql://%s", dbName));
+        config.setJdbcUrl(String.format("jdbc:mysql:///%s", dbName));
         logger.info("Adding user...");
         config.setUsername(dbUser);
         logger.info("Adding password...");
