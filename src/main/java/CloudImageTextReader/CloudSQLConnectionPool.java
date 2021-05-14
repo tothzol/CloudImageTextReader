@@ -27,7 +27,9 @@ public class CloudSQLConnectionPool {
         logger.info("Adding IPType property...");
         config.addDataSourceProperty("ipTypes", "PUBLIC,PRIVATE");
         logger.info("Starting to create new HikariDataSource...");
-        return new HikariDataSource(config);
+        DataSource Pool=new HikariDataSource(config);
+        logger.info("HikariDataSource Done.");
+        return Pool;
     }
 
     public static void createTable(DataSource pool, String tableName) throws SQLException {
