@@ -36,6 +36,7 @@ logger.info("FileName: "+Path);
             DataSource Pool= CloudSQLConnectionPool.createConnectionPool(dbUser,dbPassword,dbName,cloudSQLConnectionName);
 
             for (String n : Texts) {
+               logger.info("Trying to connect and insert data...");
                 CloudSQLConnectionPool.insertData(Pool, event.getName(), n);
             }
 
