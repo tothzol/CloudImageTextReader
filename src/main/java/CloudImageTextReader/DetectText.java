@@ -42,7 +42,7 @@ public class DetectText {
     public static ArrayList<String> detectText(String bucket, String filename) throws IOException {
         List<AnnotateImageRequest> requests = new ArrayList<>();
         ArrayList<String> Texts= new ArrayList<>() ;
-        String filePath=String.format("gs://%s/%s",bucket,filename);
+        String filePath=String.format("gs:///%s/%s",bucket,filename);
         ImageSource imgSource = ImageSource.newBuilder().setGcsImageUri(filePath).build();
         Image img = Image.newBuilder().setSource(imgSource).build();
 
