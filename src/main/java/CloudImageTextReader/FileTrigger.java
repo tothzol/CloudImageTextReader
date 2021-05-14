@@ -8,6 +8,8 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import static CloudImageTextReader.DetectText.detectText;
+
 public class FileTrigger implements BackgroundFunction<GcsEvent>{
 private static final Logger logger = Logger.getLogger(FileTrigger.class.getName());
     @Override
@@ -15,8 +17,9 @@ private static final Logger logger = Logger.getLogger(FileTrigger.class.getName(
 
         ArrayList<String> Texts;
         try {
-logger.info("FileName: gs://"+event.getBucket()+"/"+event.getName());
-            Texts= DetectText.detectText("gs://"+event.getBucket()+"/"+event.getName());
+            String Path="gs://"+event.getBucket()+"/"+event.getName();
+logger.info("FileName: "+Path);
+            Texts= detectText(Path);
             String dbUser="root";
             String dbPassword="Cl0ud2021!";
             String dbName="Trainsdb";

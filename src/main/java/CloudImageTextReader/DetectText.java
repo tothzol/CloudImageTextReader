@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetectText {
+
     public static ArrayList<String> detectText(String filePath) throws IOException {
         List<AnnotateImageRequest> requests = new ArrayList<>();
-        ArrayList<String> Texts=new ArrayList<String>() ;
+        ArrayList<String> Texts= new ArrayList<>() ;
         ByteString imgBytes = ByteString.readFrom(new FileInputStream(filePath));
 
         Image img = Image.newBuilder().setContent(imgBytes).build();
