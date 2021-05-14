@@ -19,7 +19,9 @@ private static final Logger logger = Logger.getLogger(FileTrigger.class.getName(
         try {
             String Path=String.format("gs://%s/%s",event.getBucket(),event.getName());
 logger.info("FileName: "+Path);
-            Texts= detectText(Path);
+
+           // Texts= detectText(Path);
+            Texts=detectText(event.getBucket(),event.getName());
             String dbUser="root";
             String dbPassword="Cl0ud2021!";
             String dbName="Trainsdb";
