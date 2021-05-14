@@ -33,6 +33,7 @@ logger.info("FileName: "+Path);
             String dbPassword="Cl0ud2021!";
             String dbName="Trainsdb";
             String cloudSQLConnectionName="cloudprog-2021:europe-west4:sqlcloud2021";
+            logger.info("Trying to create datasource...");
             DataSource Pool= CloudSQLConnectionPool.createConnectionPool(dbUser,dbPassword,dbName,cloudSQLConnectionName);
 
             for (String n : Texts) {
