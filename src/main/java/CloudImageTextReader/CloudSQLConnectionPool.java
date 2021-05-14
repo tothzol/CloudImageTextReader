@@ -40,9 +40,14 @@ public class CloudSQLConnectionPool {
         }
     }
     public static void  insertData (DataSource pool, String filename, String imagetext) throws SQLException {
+        logger.info("insertdata->GetConnection...");
         try (Connection conn = pool.getConnection()) {
+            logger.info("Trying to create Query...");
             String stmt=String.format("insert into testtable (CreationDate, FileName,imagetext) values (Now(), '%s', '%s');",filename,imagetext);
+            logger.info("Query: "+stmt);
+            logger.info("Trying to create prepare statement...");
             try(PreparedStatement insertStatement = conn.prepareStatement(stmt)) {
+                logger.info("Trying to create execute statement...");
                 insertStatement.execute();
 
             }
