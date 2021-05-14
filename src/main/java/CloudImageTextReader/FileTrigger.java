@@ -17,7 +17,7 @@ private static final Logger logger = Logger.getLogger(FileTrigger.class.getName(
 
         ArrayList<String> Texts;
         try {
-            String Path="gs://"+event.getBucket()+"/"+event.getName();
+            String Path=event.getBucket()+"/"+event.getName();
 logger.info("FileName: "+Path);
             Texts= detectText(Path);
             String dbUser="root";

@@ -9,6 +9,7 @@ import java.util.List;
 public class DetectText {
 
     public static ArrayList<String> detectText(String filePath) throws IOException {
+        filePath="gs://"+filePath;
         List<AnnotateImageRequest> requests = new ArrayList<>();
         ArrayList<String> Texts= new ArrayList<>() ;
         ByteString imgBytes = ByteString.readFrom(new FileInputStream(filePath));
