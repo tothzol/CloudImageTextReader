@@ -15,7 +15,7 @@ public class FileTrigger implements BackgroundFunction<GcsEvent>{
         ArrayList<String> Texts;
         try {
 
-            Texts= DetectText.detectText(event.getName());
+            Texts= DetectText.detectText(event.getBucket()+event.getName());
             String dbUser="root";
             String dbPassword="Cl0ud2021!";
             String dbName="Trainsdb";
