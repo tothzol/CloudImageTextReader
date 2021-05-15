@@ -12,23 +12,23 @@ public class CloudSQLConnectionPool {
     private static final Logger logger = Logger.getLogger(FileTrigger.class.getName());
     public static DataSource createConnectionPool(String dbUser, String dbPass, String dbName,
                                                   String cloudSqlConnectionName) {
-        logger.info("Starting to create new HikariConfig...");
+
         HikariConfig config = new HikariConfig();
-        logger.info("Setting JDBC...");
-        config.setJdbcUrl(String.format("jdbc:mysql:///%s", dbName));
-        logger.info("Adding user...");
+
+        config.setJdbcUrl(String.format("jdbc:mysql:///%s34.90.19.204:3306//", dbName));
+
         config.setUsername(dbUser);
-        logger.info("Adding password...");
+
         config.setPassword(dbPass);
-        logger.info("Adding Socketfactory property...");
+
         config.addDataSourceProperty("socketFactory", "com.google.cloud.sql.mysql.SocketFactory");
-        logger.info("Adding SQLInstance property...");
+
         config.addDataSourceProperty("cloudSqlInstance", cloudSqlConnectionName);
-        logger.info("Adding IPType property...");
+
         config.addDataSourceProperty("ipTypes", "PUBLIC,PRIVATE");
-        logger.info("Starting to create new HikariDataSource...");
+
         DataSource Pool=new HikariDataSource(config);
-        logger.info("HikariDataSource Done.");
+
         return Pool;
     }
 
