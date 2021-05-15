@@ -15,7 +15,7 @@ public class CloudSQLConnectionPool {
 
         HikariConfig config = new HikariConfig();
         config.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        config.setJdbcUrl(String.format("jdbc:mysql:///34.90.19.204:3306//%s", dbName));
+        config.setJdbcUrl(String.format("jdbc:mysql://34.90.19.204:3306/%s", dbName));
 
         config.setUsername(dbUser);
 
