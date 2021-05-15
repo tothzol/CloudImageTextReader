@@ -26,7 +26,8 @@ public class CloudSQLConnectionPool {
         config.addDataSourceProperty("cloudSqlInstance", cloudSqlConnectionName);
 
         config.addDataSourceProperty("ipTypes", "PUBLIC,PRIVATE");
-
+        config.addDataSourceProperty("useSSL",false);
+        config.setDriverClassName("org.hsqldb.jdbc.JDBCDriver");
         DataSource Pool=new HikariDataSource(config);
 
         return Pool;
